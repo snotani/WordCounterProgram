@@ -1,11 +1,10 @@
-
 import java.io.EOFException;
 import java.util.Random;
 
 /**
- * @author: Siddharth Notani
+ * @author: Redgate, edited by Siddharth Notani
  * The SimpleCharacter Reader class implements the ICharacterReader interface.
- * <p> This class is mainly used to </p>
+ * <p> This class is mainly used to get and set the string that the user wants the program to be run on.</p>
  */
 
 public class SimpleCharacterReader implements ICharacterReader {
@@ -49,6 +48,11 @@ public class SimpleCharacterReader implements ICharacterReader {
 
 	Random m_Rnd = new Random();
 
+	/**
+	 * This method is used to loop through the string and get each individual character from it.
+	 * @return character at which the string is pointing
+	 * @throws EOFException if there are no more characters to read
+	 */
 	public char GetNextChar() throws EOFException {
 
 		if (m_Pos >= m_Content.length()) {
@@ -59,13 +63,26 @@ public class SimpleCharacterReader implements ICharacterReader {
 
 	}
 
+	/**
+	 * This method does nothing but must be called after using the ICharacterReader interface
+	 */
 	public void Dispose() {
 		// do nothing
 	}
 
-	public String getM_Content(){
+	/**
+	 * Getter method for the string on which the program will run and will be analyzed.
+	 * @return m_Content is the string which is passed to lower case and can be used by other classes
+	 */
+	public String getM_Content() {
 		return m_Content.toLowerCase();
 	}
 
-	// setter for m_content too
+	/**
+	 * Setter method to test the program with different strings.
+	 * @param newContent the new String which the user wants to run the program on.
+	 */
+	public void setM_Content(String newContent) {
+		this.m_Content = newContent;
+	}
 }
